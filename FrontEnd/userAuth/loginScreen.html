@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Login</title>
+</head>
+<body onload="adminPageLoad()">
+    <form onsubmit="return false">
+        <div class="imgcontainer">
+        </div>
+      
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" id="correo" placeholder="Enter Username" name="uname" required value="mgranadosmunoz@gmail.com">
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" id="password" placeholder="Enter Password" name="psw" required value="12345678">
+      
+          <button type="submit" id="foo">Login</button>
+        </div>
+      </form>
+
+
+</body>
+<script src="../javascript/helpers/loginHelper.js"></script>
+</html>
