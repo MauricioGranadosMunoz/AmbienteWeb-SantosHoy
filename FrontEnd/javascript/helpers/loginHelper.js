@@ -1,0 +1,29 @@
+document.getElementById("foo").addEventListener('click',() => {
+    const correo = document.querySelector("#correo").value;
+    const pass = document.querySelector("#password").value;
+    login(pass,correo);
+});
+
+const login = async (pass,correo) => {
+    const requestBody = ` 
+        {
+            "email": "${correo}",
+            "password": "${pass}"
+        }
+    `
+    const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/login.php", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: requestBody,
+    });
+        
+    response.json().then(data => {
+        if(data.token) {
+            localStorage.setItem('admin-token', data.token.toString())
+            window.location.href = "../adminPanel/admin-dashboard.html";
+        }
+    });
+}
