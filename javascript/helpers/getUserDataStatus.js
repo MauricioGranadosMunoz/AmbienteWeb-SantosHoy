@@ -3,7 +3,7 @@ const adminPageLoad = () => {
     if (token) {
         getUserData(token);
     } else {
-        window.location.href = "/ambienteweb-santoshoy/FrontEnd/userAuth/loginScreen.html";
+        window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
     }
 }
 
@@ -24,7 +24,7 @@ const getUserData = async (token) => {
             document.getElementById("usuario").innerHTML = `Bienvenido ${data.user.name}`;
 
         } else {
-            window.location.href = "/ambienteweb-santoshoy/FrontEnd/userAuth/loginScreen.html";
+            window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
         }
     });
 }
