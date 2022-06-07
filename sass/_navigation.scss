@@ -1,0 +1,8 @@
+
+* {
+    background-color: darkcyan;
+    
+    @include respond-to('small') {
+        background-color: wheat;
+    }
+}
