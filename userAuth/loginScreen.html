@@ -7,21 +7,41 @@
     <link rel="stylesheet" href="../css/main.css">
     <title>Login</title>
 </head>
-<body onload="adminPageLoad()">
-    <form onsubmit="return false">
-        <div class="imgcontainer">
-        </div>
+<body>
+
+<div class="login-screen-container">
+  <div class="login-inputs-container">
+    <div class="login-left-panel">
+      <div class="login-left-content">
+        <!-- <h1>Log In Screen</h1> -->
+        <img src="../assets/post-build.svg">
+      </div>
+    </div>
+    
+    <div class="login-right-panel">
+      <div class="login-text-container">
+        <h2>Log in | Santos Hoy</h2>
+        <p>Ingrese sus credenciales de log in a continuación</p>
+      </div>
+      <form onsubmit="return false">
+        <div class="inputs-login-container">
+          <div class="input-item-login-container">
+            <label for="uname"><b>Correo Electronico</b></label>
+            <input type="text" id="correo" required value="mgranadosmunoz@gmail.com">
+          </div>
       
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" id="correo" placeholder="Enter Username" name="uname" required value="mgranadosmunoz@gmail.com">
+          <div class="input-item-login-container">
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="password" required value="12345678">
+          </div>
       
-          <label for="psw"><b>Password</b></label>
-          <input type="password" id="password" placeholder="Enter Password" name="psw" required value="12345678">
-      
-          <button type="submit" id="foo">Login</button>
+          <button class="login-cta" type="submit" id="foo">Entrar</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
 
 
 </body>
