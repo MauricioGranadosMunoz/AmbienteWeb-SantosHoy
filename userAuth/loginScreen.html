@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>Login</title>
 </head>
 <body>
@@ -32,7 +33,10 @@
       
           <div class="input-item-login-container">
             <label for="psw"><b>Password</b></label>
-            <input type="password" id="password" required value="12345678">
+            <input type="password" id="password" required value="123456784">
+          </div>
+          <div id="error-login" class="error-login-container animate__animated animate__headShake">
+            <p>Credenciales incorrectas, verifique su información</p>
           </div>
       
           <button class="login-cta" type="submit" id="foo">Entrar</button>

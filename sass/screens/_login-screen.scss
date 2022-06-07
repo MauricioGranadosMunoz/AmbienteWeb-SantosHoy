@@ -82,6 +82,19 @@
                     font-weight: 600;
                 }
             }
+            .error-login-container {
+                width: 300px;
+                background-color: #F47C7C;
+                padding: 5px 10px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                p {
+                    font-size: 12px;
+                }
+                &:not(.show-error) {
+                    display: none;
+                }
+            }
         }
     }
 }

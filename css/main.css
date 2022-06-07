@@ -72,3 +72,13 @@ html, body {
         height: 40px;
         color: #fff;
         font-weight: 600; }
+      .login-screen-container .login-inputs-container .login-right-panel .error-login-container {
+        width: 300px;
+        background-color: #F47C7C;
+        padding: 5px 10px;
+        border-radius: 10px;
+        margin-bottom: 20px; }
+        .login-screen-container .login-inputs-container .login-right-panel .error-login-container p {
+          font-size: 12px; }
+        .login-screen-container .login-inputs-container .login-right-panel .error-login-container:not(.show-error) {
+          display: none; }
