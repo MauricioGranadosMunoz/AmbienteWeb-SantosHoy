@@ -2,10 +2,10 @@
 class Database {
     
     // CREAMOS LA CONN CON LA BASE DE DATOS
-    private $db_host = 'localhost';
+    private $db_host = '20.51.249.9';
     private $db_name = 'santos-hoy';
-    private $db_username = 'root';
-    private $db_password = '';
+    private $db_username = 'santoshoy';
+    private $db_password = 'mauriciogrm123456Mg';
     
     public function dbConnection(){
         
