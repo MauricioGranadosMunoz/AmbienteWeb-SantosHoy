@@ -42,6 +42,22 @@ class Auth extends JwtHandler
             ];
         }
     }
+    public function isTokenValid()
+    {
+        if (array_key_exists('Authorization', $this->headers) && preg_match('/Bearer\s(\S+)/', $this->headers['Authorization'], $matches)) {
+            $data = $this->jwtDecodeData($matches[1]);
+            if (
+                isset($data['data']->user_id) &&
+                $user = $this->fetchUser($data['data']->user_id)
+            ) :
+                return true;
+            else :
+                return false;
+            endif;
+        } else {
+            return false;
+        }
+    }
 
     protected function fetchUser($user_id)
     {

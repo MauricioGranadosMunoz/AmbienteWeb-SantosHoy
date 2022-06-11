@@ -26,4 +26,11 @@ class Database {
         }
           
     }
+    public function endPointResponseMsg($success, $status, $message){
+        return array_merge([
+            'success' => $success,
+            'status' => $status,
+            'message' => $message
+        ]);
+    }
 }
