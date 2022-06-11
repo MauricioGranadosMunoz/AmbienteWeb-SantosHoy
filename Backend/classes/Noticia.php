@@ -1,9 +1,9 @@
 <?php
-    class noticias{
+    class Noticia{
         // Connection
         private $conn;
         // Table
-        private $db_table = "Employee";
+        private $db_table = "noticias";
         // Columns
         public $id;
         public $titulo;
@@ -23,32 +23,28 @@
             return $stmt;
         }
         // CREATE
-        public function createnoticias(){
+        public function crearNoticia(){
             $sqlQuery = "INSERT INTO
                         ". $this->db_table ."
                     SET
                         titulo = :titulo, 
                         descripcion = :descripcion, 
                         linkasset = :linkasset, 
-                        autor = :autor,
-                        created = :created;
-        
+                        autor = :autor, 
+                        created = :created";
             $stmt = $this->conn->prepare($sqlQuery);
-        
             // sanitize
             $this->titulo=htmlspecialchars(strip_tags($this->titulo));
             $this->descripcion=htmlspecialchars(strip_tags($this->descripcion));
             $this->linkasset=htmlspecialchars(strip_tags($this->linkasset));
             $this->autor=htmlspecialchars(strip_tags($this->autor));
             $this->created=htmlspecialchars(strip_tags($this->created));
-        
             // bind data
             $stmt->bindParam(":titulo", $this->titulo);
             $stmt->bindParam(":descripcion", $this->descripcion);
             $stmt->bindParam(":linkasset", $this->linkasset);
             $stmt->bindParam(":autor", $this->autor);
             $stmt->bindParam(":created", $this->created);
-        
             if($stmt->execute()){
                return true;
             }
