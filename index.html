@@ -12,12 +12,15 @@
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-light santos-navigation">
     <div class="container-fluid">
-      <a class="navbar-brand" href="./userAuth/loginScreen.html">SantosHoy</a>
+      <a class="navbar-brand" href="./userAuth/loginScreen.html">
+        <img src="./assets/branding/colored-logo-notext.svg">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,19 +28,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Iniciar sesión</a>
+            <a class="nav-link active-link" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Registrarse</a>
+            <a class="nav-link" aria-current="page" href="#">Reciente</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link" aria-current="page" href="#">Acerca</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Acerca de</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Crear noticia</a>
+            <a class="nav-link" aria-current="page" href="#">Contacto</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -58,7 +58,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000">
-        <img src="./assets/images/zona-santos-01.jpg" class="d-block w-100" alt="...">
+        <img src="./assets/images/zona-santos-01.jpeg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Zona de Los Santos</h5>
           <p>Más que sólo café.</p>
@@ -89,154 +89,86 @@
     </button>
   </div>
 
-  <br>
-  <div class="noticias-recientes">
-    <h1>Noticias Recientes</h1>
-  </div>
+<div class="content-container home-screen">
+    <h2 class="main-titles">Noticias Recientes</h2>
 
-  <!-- section de noticias recientes -->
-  <section id="section-noticias-recientes">
-    <div class="card" style="width: 18rem;">
-      <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://www.todosobre.travel/wp-content/uploads/2020/04/WhatsApp-Image-2020-04-05-at-1.52.23-PM-1.jpeg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Conozca la principal zona cafetalera de Costa Rica</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://www.todosobre.travel/wp-content/uploads/2020/04/WhatsApp-Image-2020-04-05-at-1.52.23-PM-1.jpeg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Conozca la principal zona cafetalera de Costa Rica</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <br><br>
-  <div class="noticias-populares">
-    <h1>Noticias Populares</h1>
-  </div>
-
-  <!-- section de noticias populares -->
-  <section id="section-noticias-populares">
-    <div class="card" style="width: 18rem;">
-      <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://www.todosobre.travel/wp-content/uploads/2020/04/WhatsApp-Image-2020-04-05-at-1.52.23-PM-1.jpeg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Conozca la principal zona cafetalera de Costa Rica</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img src="https://www.todosobre.travel/wp-content/uploads/2020/04/WhatsApp-Image-2020-04-05-at-1.52.23-PM-1.jpeg"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Conozca la principal zona cafetalera de Costa Rica</h5>
-        <div class="card-detalle">
-          <a href="#" class="btn btn-primary">Detalles</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</body>
-<br><br><br>
-<!-- footer -->
-<footer class="bg-light text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
-    <form action="">
-      <!--Grid row-->
-      <div class="row">
-        <!--Grid column-->
-        <div class="col-auto mb-4 mb-md-0">
-          <p class="pt-2">
-            <strong>Registrese para poder crear una noticia, además de otras opciones</strong>
-          </p>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-5 col-12 mb-4 mb-md-0">
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" id="form5Example25" class="form-control" />
-            <label class="form-label" for="form5Example25">Correo electrónico</label>
+    <div class="noticias-container">
+      <div class="card">
+        <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
+          <div class="card-detalle">
+            <a href="#" class="btn btn-primary">Detalles</a>
           </div>
         </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-auto mb-4 mb-md-0">
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary mb-4">
-            Registrarse
-          </button>
-        </div>
-        <!--Grid column-->
       </div>
-      <!--Grid row-->
-    </form>
+
+      <div class="card">
+        <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
+          <div class="card-detalle">
+            <a href="#" class="btn btn-primary">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
+          <div class="card-detalle">
+            <a href="#" class="btn btn-primary">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
+          <div class="card-detalle">
+            <a href="#" class="btn btn-primary">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
+          <div class="card-detalle">
+            <a href="#" class="btn btn-primary">Detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://revistaviajesdigital.com/images/2019/SANTOSSSS.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Zona de Los Santos diseña estrategia de crecimiento</h5>
+          <div class="card-detalle">
+            <a href="#" class="btn btn-primary">Detalles</a>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>  
+</div>
+</body>
+<!-- footer -->
+<footer class="bg-light text-center text-lg-start">
+  <div class="footer-content">
+    <img src="./assets/branding/white-logo.svg">
   </div>
-  <!-- Grid container -->
 
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2022 Copyright:
-    <a class="text-dark" href="#">SantosHoy</a>
+  <div class="text-center p-3 copyright-container">
+    © 2022 Copyright <a href="#">SantosHoy</a>
   </div>
   <!-- Copyright -->
 </footer>
-<script src="./javascript/helpers/loginHelper.js"></script>
+
 
 </html>

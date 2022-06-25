@@ -4,3 +4,30 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.content-container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-titles {
+    margin-bottom: 30px;
+}
+
+.noticias-container {
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(small){ 
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+        .card {
+            flex: 0 0 32%;
+        }
+        .card:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+    
+}

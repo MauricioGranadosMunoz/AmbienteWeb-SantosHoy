@@ -1,0 +1,42 @@
+.santos-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: $base-color-white;
+    .navbar-brand {
+        background-color: none;
+        img {
+            width: 90px;
+            height: 55px;
+            @include breakpoint(medium){ 
+                width: 110px;
+                height: 60px;
+            }
+        }
+    }
+    .nav-link.active-link {
+        color: $base-color-04;
+        &:hover {
+            color: $base-color-04;
+        }
+    }
+    .btn {
+        color: $base-color-04;
+        border-color: $base-color-04;
+        &:hover {
+            background-color: $base-color-04;
+            color: $base-color-white;
+        }
+    }
+    
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        background: rgb(34,193,195);
+        background: linear-gradient(0deg, rgba(34,193,195,0) 0%, rgba(255,255,255,1) 70%);
+        bottom: -10px;
+    }
+    
+}
