@@ -7,12 +7,17 @@
     require '../../classes/Database.php';
     require '../../classes/Noticia.php';
     require '../../AuthMiddleware.php';
-    $returnData = [];
-    $allHeaders = getallheaders();
+    
     $database = new Database();
     $db = $database->dbConnection();
+    
     $item = new Noticia($db);
+    
     $data = json_decode(file_get_contents("php://input"));
+    
+    $item->id = $data->id;
+    
+    // employee values
     $item->titulo = $data->titulo;
     $item->descripcion = $data->descripcion;
     $item->linkasset = $data->linkasset;
@@ -20,12 +25,10 @@
     $item->created = date('Y-m-d H:i:s');
     $item->tipo = $data->tipo;
     $auth = new Auth($db, $allHeaders);
-    if($auth->isTokenValid()){
-        if($item->crearNoticia()){
-            $returnData = $database->endPointResponseMsg(1, 201, 'Noticia Creada Exitosamente');
-        }
+    
+    if($item->updateEmployee()){
+        echo json_encode("La noticia se actualizo correctamente");
     } else{
-        $returnData = $database->endPointResponseMsg(1, 201, 'Error creando noticia');
+        echo json_encode("No se pudo actualizar la noticia");
     }
-    echo json_encode($returnData);
 ?>

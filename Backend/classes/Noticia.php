@@ -11,13 +11,14 @@
         public $linkasset;
         public $autor;
         public $created;
+        public $tipo;
         // Db connection
         public function __construct($db){
             $this->conn = $db;
         }
         // GET ALL
         public function getnoticias(){
-            $sqlQuery = "SELECT id, titulo, descripcion, linkasset, autor, created FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT id, titulo, descripcion, linkasset, autor, created, tipo FROM " . $this->db_table . "";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -31,7 +32,8 @@
                         descripcion = :descripcion, 
                         linkasset = :linkasset, 
                         autor = :autor, 
-                        created = :created";
+                        created = :created,
+                        tipo= :tipo";
             $stmt = $this->conn->prepare($sqlQuery);
             // sanitize
             $this->titulo=htmlspecialchars(strip_tags($this->titulo));
@@ -39,12 +41,14 @@
             $this->linkasset=htmlspecialchars(strip_tags($this->linkasset));
             $this->autor=htmlspecialchars(strip_tags($this->autor));
             $this->created=htmlspecialchars(strip_tags($this->created));
+            $this->tipo=htmlspecialchars(strip_tags($this->tipo));
             // bind data
             $stmt->bindParam(":titulo", $this->titulo);
             $stmt->bindParam(":descripcion", $this->descripcion);
             $stmt->bindParam(":linkasset", $this->linkasset);
             $stmt->bindParam(":autor", $this->autor);
             $stmt->bindParam(":created", $this->created);
+            $stmt->bindParam(":tipo", $this->tipo);
             if($stmt->execute()){
                return true;
             }
@@ -58,7 +62,8 @@
                         descripcion, 
                         linkasset, 
                         autor, 
-                        created
+                        created,
+                        tipo
                       FROM
                         ". $this->db_table ."
                     WHERE 
@@ -74,6 +79,7 @@
             $this->linkasset = $dataRow['linkasset'];
             $this->autor = $dataRow['autor'];
             $this->created = $dataRow['created'];
+            $this->tipo = $dataRow['tipo'];
         }        
         // UPDATE
         public function updatenoticias(){
@@ -84,7 +90,8 @@
                         descripcion = :descripcion, 
                         linkasset = :linkasset, 
                         autor = :autor, 
-                        created = :created
+                        created = :created,
+                        tipo = :tipo
                     WHERE 
                         id = :id";
         
@@ -96,13 +103,14 @@
             $this->autor=htmlspecialchars(strip_tags($this->autor));
             $this->created=htmlspecialchars(strip_tags($this->created));
             $this->id=htmlspecialchars(strip_tags($this->id));
-        
+            $this->tipo=htmlspecialchars(strip_tags($this->tipo));
             // bind data
             $stmt->bindParam(":titulo", $this->titulo);
             $stmt->bindParam(":descripcion", $this->descripcion);
             $stmt->bindParam(":linkasset", $this->linkasset);
             $stmt->bindParam(":autor", $this->autor);
             $stmt->bindParam(":created", $this->created);
+            $stmt->bindParam(":tipo", $this->tipo);
             $stmt->bindParam(":id", $this->id);
         
             if($stmt->execute()){

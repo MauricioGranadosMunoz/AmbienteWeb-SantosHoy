@@ -7,25 +7,19 @@
     require '../../classes/Database.php';
     require '../../classes/Noticia.php';
     require '../../AuthMiddleware.php';
-    $returnData = [];
-    $allHeaders = getallheaders();
+    
     $database = new Database();
     $db = $database->dbConnection();
+    
     $item = new Noticia($db);
+    
     $data = json_decode(file_get_contents("php://input"));
-    $item->titulo = $data->titulo;
-    $item->descripcion = $data->descripcion;
-    $item->linkasset = $data->linkasset;
-    $item->autor = $data->autor;
-    $item->created = date('Y-m-d H:i:s');
-    $item->tipo = $data->tipo;
-    $auth = new Auth($db, $allHeaders);
-    if($auth->isTokenValid()){
-        if($item->crearNoticia()){
-            $returnData = $database->endPointResponseMsg(1, 201, 'Noticia Creada Exitosamente');
-        }
+    
+    $item->id = $data->id;
+    
+    if($item->deleteEmployee()){
+        echo json_encode("Se elimino la noticia");
     } else{
-        $returnData = $database->endPointResponseMsg(1, 201, 'Error creando noticia');
+        echo json_encode("No se pudo eliminar la noticia");
     }
-    echo json_encode($returnData);
 ?>
