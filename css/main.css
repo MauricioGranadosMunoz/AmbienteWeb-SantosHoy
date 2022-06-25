@@ -27,7 +27,7 @@ html, body {
         position: relative;
         z-index: 2; }
       .login-screen-container .login-inputs-container .login-left-panel:before {
-        background-color: rgba(58, 161, 221, 0.5);
+        background-color: rgba(10, 161, 221, 0.5);
         content: '';
         display: block;
         height: 100%;
