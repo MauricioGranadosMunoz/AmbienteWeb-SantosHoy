@@ -1,0 +1,20 @@
+footer {
+    .footer-content {
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $base-color-03;
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+    .copyright-container {
+        background-color: $base-color-04;
+        color: $base-color-white;
+        a {
+            color: $base-color-white;
+        }
+    }
+}
