@@ -15,6 +15,7 @@
     $db = $database->dbConnection();
     $item = new Noticia($db);
     $data = json_decode(file_get_contents("php://input"),true);
+    echo
     $linkasset  =  $_FILES['sendimage']['name'];
     $tempPath  =  $_FILES['sendimage']['tmp_name'];
     $fileSize  =  $_FILES['sendimage']['size'];
