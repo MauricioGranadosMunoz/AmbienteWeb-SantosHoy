@@ -25,7 +25,7 @@
                 "linkasset" => $linkasset,
                 "autor" => $autor,
                 "created" => $created,
-                "tipo" => $tipo;
+                "tipo" => $tipo
             );
             array_push($noticiasArr["body"], $e);
         }
