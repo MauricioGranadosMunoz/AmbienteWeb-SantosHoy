@@ -21,7 +21,7 @@ const getUserData = async (token) => {
     
     response.json().then(data => {
         if(data.success != 0) {
-            document.getElementById("usuario").innerHTML = `Bienvenido ${data.user.name}`;
+            document.getElementById("usuario").innerHTML = `<span>Bienvenido</span> ${data.user.name}`;
 
         } else {
             window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
