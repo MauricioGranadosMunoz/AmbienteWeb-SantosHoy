@@ -4,15 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../javascript/helpers/getUserDataStatus.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
-<body onload="adminPageLoad()">
+<body class="body-admin-screen" onload="adminPageLoad()">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light santos-navigation">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./userAuth/loginScreen.html">
+            <img src="../assets/branding/colored-logo-notext.svg">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <p class="usuario-text" id="usuario"><p>
+            <button id="logout-cta" class="btn btn-danger">Log Out</button>
+          </div>
+        </div>
+      </nav>
 
-    <h1 id="usuario">Hola</h1>
-    <h1> ADMIN DASHBOARD</h1>
-    <button id="logout-cta">Log out</button>
-    
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+      </nav>
+  
+      <!-- <input type="file"> -->
+      <!-- <button type="submit" id="guardar-noticia">Guardar Noticia</button> -->
+      <button type="button" class="btn btn-success agregar-noticias"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+      </svg>Agregar Noticia</button>
+
+    <div class="content-container admin-screen">
+        <h2 class="main-titles">Noticias en sistema</h2>
+
+        <div class="noticias-container" id="noticias-container"></div>
+        
 </body>
 <script  type="module" src="../javascript/helpers/adminHelper.js"></script>
 </html>
