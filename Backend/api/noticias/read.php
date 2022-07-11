@@ -10,11 +10,10 @@
     $stmt = $items->getnoticias();
     $itemCount = $stmt->rowCount();
 
-    echo json_encode($itemCount);
     if($itemCount > 0){
         
         $noticiasArr = array();
-        $noticiasArr["body"] = array();
+        $noticiasArr["noticias"] = array();
         $noticiasArr["itemCount"] = $itemCount;
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
@@ -27,7 +26,7 @@
                 "created" => $created,
                 "tipo" => $tipo
             );
-            array_push($noticiasArr["body"], $e);
+            array_push($noticiasArr["noticias"], $e);
         }
         echo json_encode($noticiasArr);
     }
