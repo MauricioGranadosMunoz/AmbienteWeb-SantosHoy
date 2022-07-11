@@ -166,3 +166,63 @@ footer .copyright-container {
 
 .content-container.home-screen {
   padding: 50px 30px; }
+
+.body-admin-screen {
+  background-color: #edf2f4; }
+  .body-admin-screen .usuario-text {
+    font-size: 20px;
+    margin-bottom: 0; }
+    .body-admin-screen .usuario-text span {
+      font-weight: bold; }
+  .body-admin-screen nav.navbar .collapse.navbar-collapse {
+    justify-content: space-between;
+    align-items: center; }
+  .body-admin-screen nav.navbar p {
+    margin-bottom: 0; }
+  .body-admin-screen nav.navbar .btn.btn-danger {
+    color: #fff;
+    border: none;
+    font-weight: bold; }
+  .body-admin-screen .breadcrumb {
+    margin-top: 30px;
+    margin-left: 20px; }
+    .body-admin-screen .breadcrumb a {
+      color: #02C39A; }
+  .body-admin-screen .agregar-noticias {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 20px; }
+    .body-admin-screen .agregar-noticias svg {
+      margin-right: 5px; }
+  .body-admin-screen .noticias-container .card {
+    margin-bottom: 20px; }
+    .body-admin-screen .noticias-container .card img {
+      filter: brightness(70%);
+      height: 200px;
+      object-fit: cover; }
+    .body-admin-screen .noticias-container .card .card-title {
+      font-weight: bold;
+      font-size: 20px; }
+    .body-admin-screen .noticias-container .card .card-text {
+      font-size: 14px; }
+    .body-admin-screen .noticias-container .card .card-fecha,
+    .body-admin-screen .noticias-container .card .card-author {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0; }
+      .body-admin-screen .noticias-container .card .card-fecha svg,
+      .body-admin-screen .noticias-container .card .card-author svg {
+        margin-right: 5px; }
+    .body-admin-screen .noticias-container .card .card-tipo {
+      background-color: #6c757d;
+      width: 90px;
+      justify-content: center;
+      display: flex;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 5px;
+      color: #fff;
+      margin-top: 16px; }
+    .body-admin-screen .noticias-container .card .card-cta-opciones {
+      font-weight: bold; }
