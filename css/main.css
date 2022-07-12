@@ -19,12 +19,15 @@ body {
   @media (min-width: 601px) {
     .noticias-container {
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: left;
       flex-direction: row; }
       .noticias-container .card {
-        flex: 0 0 32%; }
+        flex: 0 0 32%;
+        margin-right: 15px; }
+        .noticias-container .card:nth-child(3n) {
+          margin-right: 0; }
       .noticias-container .card:not(:last-child) {
-        margin-bottom: 20px; } }
+        margin-bottom: 15px; } }
 
 .santos-navigation {
   position: sticky;
@@ -201,6 +204,19 @@ footer .copyright-container {
       filter: brightness(70%);
       height: 200px;
       object-fit: cover; }
+    .body-admin-screen .noticias-container .card .card-image-container {
+      position: relative; }
+      .body-admin-screen .noticias-container .card .card-image-container .card-id-section {
+        background-color: #00A896;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        right: 0;
+        padding: 5px 15px;
+        color: #fff;
+        font-weight: bold;
+        margin: 0;
+        border-radius: 0 3px 0 3px; }
     .body-admin-screen .noticias-container .card .card-title {
       font-weight: bold;
       font-size: 20px; }
@@ -226,3 +242,20 @@ footer .copyright-container {
       margin-top: 16px; }
     .body-admin-screen .noticias-container .card .card-cta-opciones {
       font-weight: bold; }
+  .body-admin-screen .agregar-noticia-modal .form-group {
+    margin: 10px 0; }
+  .body-admin-screen .agregar-noticia-modal .agregar-img-noticia .output-img-container {
+    border-radius: 10px;
+    display: none;
+    max-height: 200px;
+    object-fit: cover; }
+  .body-admin-screen .agregar-noticia-modal .agregar-img-noticia .output-img-container.show {
+    display: block; }
+  .body-admin-screen .agregar-noticia-modal .agregar-img-noticia input {
+    padding: 10px 0; }
+    .body-admin-screen .agregar-noticia-modal .agregar-img-noticia input::file-selector-button {
+      color: #fff;
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      border-radius: 10px;
+      padding: 5px 10px; }

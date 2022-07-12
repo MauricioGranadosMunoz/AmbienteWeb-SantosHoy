@@ -3,18 +3,19 @@
 //     guardarNoticia();
 // }); 
 
-
-
 $( document ).ready(() => {
     const addDataE = async (image) => {
+        const seleccionTitulo = $('#input-titulo').val();
         const userToken = window.localStorage.getItem('admin-token');
+        const nameUser = window.localStorage.getItem('admin-name');
+        const dateTime = new Date().toLocaleString();
         const requestBody = ` 
         {
-            "titulo": "SanJose",
+            "titulo": "${seleccionTitulo}",
             "descripcion": "qwert123",
             "linkasset": "${image}",
-            "autor": "Jose Ramos",
-            "created": "2012-06-10 02:12:30",
+            "autor": "${nameUser}",
+            "created": "${dateTime}",
             "tipo": "Sucesos"
         }
         `
@@ -29,13 +30,14 @@ $( document ).ready(() => {
         });
 
         response.json().then(data => {
-            console.log(data)
+            console.log(data);
+            getNoticiasData();
         });
     }
 
 
     const guardarNoticia = async () => {
-        const input = document.querySelector('input[type="file"]');
+        const input = document.getElementById('noticia-img-upload');
         let data = new FormData();
         data.append('sendimage', input.files[0]);
         
@@ -62,17 +64,21 @@ $( document ).ready(() => {
         });
         
         response.json().then(({noticias}) => {
-            noticias.forEach(({titulo,autor, tipo,descripcion,linkasset}) => {
+            $('#noticias-container').empty();
+            noticias.forEach(({id, titulo,autor, tipo,descripcion,linkasset,created}) => {
                 $('#noticias-container').append(`
-                    <div class="card">
-                        <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                    <div class="card" id="${id}">
+                        <div class="card-image-container">
+                            <p class="card-id-section">${id}</p>
+                            <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">${titulo}</h5>
                             <p class="card-text">${descripcion}</p>
                             <div class="card-noticia-type">
                                 <p class="card-fecha"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                                     <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                </svg>2022-07-08 05:27:08</p>
+                                </svg>${created}</p>
                                 <p class="card-author"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>${autor}</p>
@@ -80,7 +86,7 @@ $( document ).ready(() => {
                             </div>
                             <hr>
                             <div class="card-cta-container">
-                                <p class="card-cta-opciones">Opciones de edición<p>
+                                <p class="card-cta-opciones">Opciones de noticia<p>
                                 <a href="#" class="btn btn-success">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -110,6 +116,19 @@ $( document ).ready(() => {
     $( "#logout-cta" ).click(() => {
         window.localStorage.removeItem('admin-token');
         window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
+    });
+
+    $( "#agregar-noticia-cta" ).click(() => {
+        guardarNoticia();
+    });
+
+    $('#noticia-img-upload').on("change", (e) => {
+        const output = document.getElementById('output-img');
+        output.src = URL.createObjectURL(e.target.files[0]);
+        output.classList.add( "show" );
+        output.onload = () => {
+            URL.revokeObjectURL(output.src)
+        }
     });
 
     getNoticiasData();

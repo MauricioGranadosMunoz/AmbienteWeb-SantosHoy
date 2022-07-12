@@ -20,13 +20,17 @@ body {
     flex-direction: column;
     @include breakpoint(small){ 
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: left;
         flex-direction: row;
         .card {
             flex: 0 0 32%;
+            margin-right: 15px;
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
         }
         .card:not(:last-child) {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
     }
     
