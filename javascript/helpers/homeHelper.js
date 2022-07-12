@@ -6,23 +6,22 @@ $(document).ready(function() {
       dataType : 'json',
       success : function(json) {
              var items = ''
-            json.noticias.forEach(noticia => {
-                console.log(noticia.titulo)
-                console.log(noticia.linkasset)
-                img=' <div class="card">'+
-                //'<img src="http://localhost"'+noticia.linkasset+' class="card-img-top" alt="...">'+
-                '<img src="http://localhost/ambienteweb-santoshoy/assets/apiUploads/2022-07-08/imagen-2022-07-08-05-27-08.jpg" class="card-img-top" alt="...">'+
-                    '<div class="card-body">'+
-                        '<h5 class="card-title">'+noticia.titulo+'</h5>'+
-                            '<div class="card-detalle">'+
-                                 '<a href="#" class="btn btn-primary">Detalles</a>'+
-                            '</div>'+
-                     '</div>'+
-                '</div>'
-                items = items + img
+
+            json.noticias.forEach(({id, titulo,autor, tipo,descripcion,linkasset,created}) => {
+                $('#noticias-container').append(`
+                    <div class="card" id="${id}">
+                            <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${titulo}</h5>
+                            <p class="card-text">${descripcion}</p>
+                            <div class="card-noticia-type">
+                                <p class="card-tipo">${tipo}</p>
+                            </div>
+                            <a href="#">VER NOTICIA</a>
+                        </div>
+                    </div>
+                `);
             });
-            console.log(json);
-            $('#noticias-container').append(`${items}`);
       },
       
       error : function(xhr, status) {

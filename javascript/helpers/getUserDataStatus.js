@@ -21,6 +21,7 @@ const getUserData = async (token) => {
     
     response.json().then(data => {
         if(data.success != 0) {
+            localStorage.setItem('admin-name', data.user.name);
             document.getElementById("usuario").innerHTML = `<span>Bienvenido</span> ${data.user.name}`;
 
         } else {
