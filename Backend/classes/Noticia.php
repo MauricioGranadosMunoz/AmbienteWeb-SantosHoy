@@ -73,13 +73,24 @@
             $stmt->bindParam(1, $this->id);
             $stmt->execute();
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $this->titulo = $dataRow['titulo'];
-            $this->descripcion = $dataRow['descripcion'];
-            $this->linkasset = $dataRow['linkasset'];
-            $this->autor = $dataRow['autor'];
-            $this->created = $dataRow['created'];
-            $this->tipo = $dataRow['tipo'];
+            if(!empty($dataRow)) {
+                $noticiaReturn = array(
+                    "id" => $dataRow['id'],
+                    "titulo" => $dataRow['titulo'],
+                    "descripcion" => $dataRow['descripcion'],
+                    "linkasset" => $dataRow['linkasset'],
+                    "autor" => $dataRow['autor'],
+                    "created" => $dataRow['created'],
+                    "tipo" => $dataRow['tipo']
+                );
+            } else {
+                $noticiaReturn = array(
+                    "status" => '404',
+                    "descripcion" => 'NOTICA NO ENCONTRADA'
+                );
+            }
+            return $noticiaReturn;
+
         }        
         // UPDATE
         public function updatenoticias(){
