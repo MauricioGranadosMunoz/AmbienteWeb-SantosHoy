@@ -7,7 +7,7 @@
     require '../../classes/Database.php';
     require '../../classes/Noticia.php';
     require '../../AuthMiddleware.php';
-    
+    $allHeaders = getallheaders();
     $database = new Database();
     $db = $database->dbConnection();
     
@@ -26,7 +26,7 @@
     $item->tipo = $data->tipo;
     $auth = new Auth($db, $allHeaders);
     
-    if($item->updateEmployee()){
+    if($item->updatenoticias()){
         echo json_encode("La noticia se actualizo correctamente");
     } else{
         echo json_encode("No se pudo actualizar la noticia");

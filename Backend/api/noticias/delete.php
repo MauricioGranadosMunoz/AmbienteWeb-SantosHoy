@@ -17,7 +17,7 @@
     
     $item->id = $data->id;
     
-    if($item->deleteEmployee()){
+    if($item->deletenoticia()){
         echo json_encode("Se elimino la noticia");
     } else{
         echo json_encode("No se pudo eliminar la noticia");
