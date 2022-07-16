@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../javascript/helpers/getUserDataStatus.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Admin Panel | Santos Hoy</title>
+</head>
+<body class="body-admin-screen" onload="adminPageLoad()">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light santos-navigation">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./userAuth/loginScreen.html">
+            <img src="../assets/branding/colored-logo-notext.svg">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <p class="usuario-text" id="usuario"><p>
+            <button id="logout-cta" class="btn btn-danger">Log Out</button>
+          </div>
+        </div>
+      </nav>
+
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+      </nav>
+  
+      <button type="button" class="btn btn-success agregar-noticias" data-toggle="modal" data-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+      </svg>Agregar Noticia</button>
+
+    <div class="content-container admin-screen">
+        <h2 class="main-titles">Noticias en sistema</h2>
+        <div class="noticias-container" id="noticias-container"></div>
+
+  <!-- Modal AGREGAR NOTICIAS -->
+  <div class="modal fade agregar-noticia-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Noticia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="agregar-img-noticia">
+            <img id="output-img" class="card-img-top output-img-container animate__animated animate__fadeIn" alt="...">
+            <input type="file" id="noticia-img-upload" accept="image/*">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Titulo</label>
+            <input type="text" class="form-control" id="input-titulo" aria-describedby="emailHelp" placeholder="Ingresar titulo de noticia">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="agregar-noticia-cta" type="button" data-dismiss="modal" class="btn btn-success" >Agregar Noticia</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade ver-noticia-modal" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ver noticia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="ver-noticias-modal">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="Aceptar-noticia" type="button" data-dismiss="modal" class="btn btn-success" >Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal EDITAR NOTICIAS -->
+  <div class="modal fade agregar-noticia-modal" id="editNoticiasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Noticia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="agregar-img-noticia">
+            <img id="input-img-editar" class="card-img-top output-img-container animate__animated animate__fadeIn" alt="...">
+            <input type="file" id="noticia-img-upload" accept="image/*">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Titulo</label>
+            <input type="text" class="form-control" id="input-titulo-editar" aria-describedby="emailHelp" placeholder="Ingresar titulo de noticia">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripción</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="agregar-noticia-cta" type="button" data-dismiss="modal" class="btn btn-warning">Editar Noticia</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+<script  type="module" src="../javascript/helpers/adminHelper.js"></script>
+</html>
