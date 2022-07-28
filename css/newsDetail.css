@@ -1,0 +1,30 @@
+.news-detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    /*border: 1px solid #212529;
+    border-radius: 0.25rem;*/
+    /*height: 305%;*/
+    margin-top: 1%;
+}
+
+.card-img-top-news {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #212529;
+    border-radius: 1rem;
+    max-height: 500px!important;
+}
+
+.card-news-title{
+    font-weight: bold;
+}
