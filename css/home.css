@@ -24,7 +24,7 @@
     background-clip: border-box;
     border: 1px solid #212529;
     border-radius: 0.25rem;
-    height: 105%;
+    /*  height: 105%;  */
 }
 
 .card-img-top {
@@ -38,6 +38,7 @@
     border: 1px solid #212529;
     border-radius: 0.25rem;
     max-height: 190px!important;
+    height: 110%;
 }
 
 .noticias-recientes {
@@ -67,4 +68,24 @@
 	height: 100px;
 }
 
+.div-visualizar-noticia{
+    text-align: center;
+}
 
+.verNoticiasModalButton{
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    padding: 3%;
+    border-radius: 4%;
+    text-decoration: none;
+}
+
+.verNoticiasModalButton:hover {
+    color: #fff;
+    background-color: #157347;
+    border-color: #146c43;
+    padding: 3%;
+    border-radius: 4%;
+    text-decoration: none;
+}
