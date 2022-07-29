@@ -26,9 +26,21 @@
     $item->tipo = $data->tipo;
     $auth = new Auth($db, $allHeaders);
     
+    function msg($success,$status,$message,$extra = []){
+        return array_merge([
+            'success' => $success,
+            'status' => $status,
+            'message' => $message
+        ],$extra);
+    }
     if($item->updatenoticias()){
-        echo json_encode("La noticia se actualizo correctamente");
+        echo json_encode(
+            
+            msg(0,200,"Se actualizo correctamente")
+        );
     } else{
         echo json_encode("No se pudo actualizar la noticia");
     }
+
+
 ?>
