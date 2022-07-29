@@ -69,7 +69,17 @@
             <label for="exampleInputEmail1">Titulo</label>
             <input type="text" class="form-control" id="input-titulo" aria-describedby="emailHelp" placeholder="Ingresar titulo de noticia">
           </div>
-
+          
+          <div class="form-group" >
+            <label for="exampleFormControlTextarea1">Categoria</label>
+            <select name="Categoria" id="input-categoria">
+              <option value="Sucesos">Sucesos</option>
+              <option value="Nacionales">Nacionales</option>
+              <option value="Deporte">Deportes</option>
+              <option value="Economia">Economia</option>
+              <option value="Tecnologia">Tecnologia</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Descripción</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -124,16 +134,25 @@
             <label for="exampleInputEmail1">Titulo</label>
             <input type="text" class="form-control" id="input-titulo-editar" aria-describedby="emailHelp" placeholder="Ingresar titulo de noticia">
           </div>
-
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Categoria</label>
+            <select name="Categoria" id="input-categoria-editar">
+              <option value="Sucesos">Sucesos</option>
+              <option value="Nacionales">Nacionales</option>
+              <option value="Deporte">Deportes</option>
+              <option value="Economia">Economia</option>
+              <option value="Tecnologia">Tecnologia</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Descripción</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1-editar" rows="3"></textarea>
           </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button id="agregar-noticia-cta" type="button" data-dismiss="modal" class="btn btn-warning">Editar Noticia</button>
+          <button id="editar-noticia-cta" type="button" data-dismiss="modal" class="btn btn-warning">Editar Noticia</button>
         </div>
       </div>
     </div>

@@ -4,13 +4,14 @@ $( document ).ready(() => {
         const userToken = window.localStorage.getItem('admin-token');
         const nameUser = window.localStorage.getItem('admin-name');
         const dateTime = new Date().toLocaleString();
+        const categoria= $("#input-categoria :selected").text();
         const requestBody = `{
             "titulo": "${seleccionTitulo}",
             "descripcion": "qwert123",
             "linkasset": "${image}",
             "autor": "${nameUser}",
             "created": "${dateTime}",
-            "tipo": "Sucesos" }`
+            "tipo": "${categoria}" }`
 
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/crear.php", {
             method: 'POST',
@@ -51,6 +52,41 @@ $( document ).ready(() => {
         response.json().then(getNoticiasData());
     }
 
+
+    const updateNoticia = async (id2) => {
+        var APIimage=document.getElementById('input-img-editar').src;
+        console.log(APIimage)
+        const identificador=id2;
+        const image=APIimage;
+        const seleccionTitulo = $('#input-titulo-editar').val();
+        console.log(addDataE)
+        console.log(seleccionTitulo)
+        const userToken = window.localStorage.getItem('admin-token');
+        const nameUser = window.localStorage.getItem('admin-name');
+        const dateTime = new Date().toLocaleString();
+        const categoria= $("#input-categoria-editar :selected").text();
+        const requestBody = `{
+            "id": "${identificador}"
+            "titulo": "${seleccionTitulo}",
+            "descripcion": "qwert123",
+            "linkasset": "${image}",
+            "autor": "${nameUser}",
+            "created": "${dateTime}",
+            "tipo": "${categoria}" }`
+            console.log(requestBody);
+        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/update.php", {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${userToken}`
+            },
+            body: requestBody,
+        });
+        console.log(response.json())
+    
+    }
+
     const GETNoticiaIndividual = async ( idnoticia ) => {
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
             method: 'GET',
@@ -76,22 +112,33 @@ $( document ).ready(() => {
         })
     }
 
-    const getSingleNoticiasData = async ( noticiaId ) => {
-        const requestBody = `{ "noticia": "${noticiaId}" }`
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/readsinglenew.php", {
-            method: 'POST',
+    const getSingleNoticiasData = async ( idnoticia ) => {
+        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
+            method: 'GET',
             headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            },
-            body: requestBody,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
         });
-        
-        response.json().then(({ titulo, linkasset }) => {
-            $("#input-titulo-editar").val(titulo);
-            $("#input-img-editar").attr("src",`http://localhost${linkasset}`);
+        response.json().then(({ noticias }) => {
+            $('#ver-noticias-modal').empty();
+            
             $( "#input-img-editar" ).addClass( "show" );
-        });
+            noticias.forEach(({ id, titulo, autor, tipo, descripcion, linkasset, created }) => {
+                if(idnoticia==id){
+                    $("#input-titulo-editar").val(titulo);
+                    $("#input-img-editar").attr("src",`http://localhost${linkasset}`);
+                    /*$('#ver-noticias-modal').append(`
+                    <h1>${titulo}</h1>
+                    <h4>${autor}</h4>
+                    <h4>${tipo}</h4>
+                    <h5>${created}</h5>
+                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="500" height="600">
+                    <p>${descripcion}</p>
+                    `);*/
+                }
+            })
+        })
     }
 
 
@@ -160,8 +207,16 @@ $( document ).ready(() => {
         guardarNoticia();
     });
 
+    
+
     $('#noticias-container').on('click', '.editNoticiasModalButton', (e) => {
         getSingleNoticiasData(e.target.id);
+        console.log(e)
+        var id=e.target.id;
+        $( "#editar-noticia-cta" ).click(() =>{
+            updateNoticia(id);
+            console.log(id)
+        });
     });
 
     $('#noticia-img-upload').on("change", (e) => {
