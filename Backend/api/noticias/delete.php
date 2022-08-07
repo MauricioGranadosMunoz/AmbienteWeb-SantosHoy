@@ -7,7 +7,8 @@
     require '../../classes/Database.php';
     require '../../classes/Noticia.php';
     require '../../AuthMiddleware.php';
-    
+    $returnData = [];
+    $allHeaders = getallheaders();
     $database = new Database();
     $db = $database->dbConnection();
     
@@ -17,9 +18,17 @@
     
     $item->id = $data->id;
     
-    if($item->deletenoticia()){
-        echo json_encode("Se elimino la noticia");
+    $auth = new Auth($db, $allHeaders);
+
+    if($auth->isTokenValid()){
+        if($item->deletenoticia()){
+            $returnData = $database->endPointResponseMsg(1, 201, 'Se elimino la noticia');
+        }else{
+            $returnData = $database->endPointResponseMsg(1, 201, 'No se pudo eliminar la noticia');
+        }
     } else{
-        echo json_encode("No se pudo eliminar la noticia");
+        $returnData = $database->endPointResponseMsg(1, 201, 'No se pudo eliminar la noticia por token invalido');
     }
+    echo json_encode($returnData);
+
 ?>
