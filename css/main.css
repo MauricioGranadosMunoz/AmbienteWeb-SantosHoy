@@ -42,17 +42,51 @@ body {
     flex-direction: row;
   }
 
+  /* AJUSTE */
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+  /* AJUSTE */
+  .card:hover {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid rgb(0 168 150);
+    border-radius: 0.25rem;
+  }
+
   .noticias-container .card {
+    /* AJUSTE
     flex: 0 0 32%;
     margin-right: 15px;
+    */
+
+    flex: 0 0 29%;
+    margin-right: 70px;
+    height: fit-content;
   }
 
   .noticias-container .card:nth-child(3n) {
     margin-right: 0;
   }
 
+  /* AJUSTE */
   .noticias-container .card:not(:last-child) {
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
+    margin-bottom: 60px;
+    height: auto;
   }
 }
 
@@ -314,7 +348,9 @@ footer .copyright-container a {
 }
 
 .body-admin-screen .noticias-container .card {
-  margin-bottom: 20px;
+  /* AJUSTE
+  margin-bottom: 20px;*/
+  margin-bottom: 70px;
 }
 
 .body-admin-screen .noticias-container .card img {
@@ -351,8 +387,9 @@ footer .copyright-container a {
 
 .body-admin-screen .noticias-container .card .card-fecha,
 .body-admin-screen .noticias-container .card .card-author {
-  display: flex;
+  /*display: flex;*/
   align-items: center;
+  text-align: center;
   margin-bottom: 0;
 }
 
@@ -361,9 +398,11 @@ footer .copyright-container a {
   margin-right: 5px;
 }
 
+/* AJUSTE */
 .body-admin-screen .noticias-container .card .card-tipo {
-  background-color: #6c757d;
-  width: 90px;
+  /*background-color: #6c757d;*/
+  background-color: #00a896;
+  /*width: 90px;*/
   justify-content: center;
   display: flex;
   font-weight: bold;
@@ -371,6 +410,11 @@ footer .copyright-container a {
   padding: 5px;
   color: #fff;
   margin-top: 16px;
+}
+
+/* AJUSTE */
+.card-cta-container{
+  text-align: center;
 }
 
 .body-admin-screen .noticias-container .card .card-autor {

@@ -68,7 +68,8 @@ $( document ).ready(() => {
                     <h4>${autor}</h4>
                     <h4>${tipo}</h4>
                     <h5>${created}</h5>
-                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="500" height="600">
+                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="465" height="500">
+                    <br><br>
                     <p>${descripcion}</p>
                     `);
                 }
