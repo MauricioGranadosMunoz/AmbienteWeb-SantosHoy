@@ -3,14 +3,16 @@ $( document ).ready(() => {
         const seleccionTitulo = $('#input-titulo').val();
         const userToken = window.localStorage.getItem('admin-token');
         const nameUser = window.localStorage.getItem('admin-name');
+        const description = $('#exampleFormControlTextarea1').val();
         const dateTime = new Date().toLocaleString();
+        const categoria= $("#input-categoria :selected").text();
         const requestBody = `{
             "titulo": "${seleccionTitulo}",
-            "descripcion": "qwert123",
+            "descripcion": "${description}",
             "linkasset": "${image}",
             "autor": "${nameUser}",
             "created": "${dateTime}",
-            "tipo": "Sucesos" }`
+            "tipo": "${categoria}" }`
 
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/crear.php", {
             method: 'POST',
@@ -39,16 +41,54 @@ $( document ).ready(() => {
 
     const postEliminarNoticia = async ( identificador ) => {
         const requestBody = `{ "id": "${identificador}" }`
-
+        const userToken = window.localStorage.getItem('admin-token');
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/delete.php", {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            },
+            
+            'Authorization' : `Bearer ${userToken}`
+        },
             body: requestBody,
         });
         response.json().then(getNoticiasData());
+    }
+
+
+    const updateNoticia = async (id2) => {
+        var APIimage=document.getElementById('input-img-editar').src;
+        console.log(APIimage)
+        const identificador=id2;
+        const image=APIimage;
+        const seleccionTitulo = $('#input-titulo-editar').val();
+        console.log(addDataE)
+        console.log(seleccionTitulo)
+        const userToken = window.localStorage.getItem('admin-token');
+        const nameUser = window.localStorage.getItem('admin-name');
+        const dateTime = new Date().toLocaleString();
+        const categoria= $("#input-categoria-editar :selected").text();
+        const description = $('#exampleFormControlTextarea1-editar').val();
+        const requestBody = `{
+            "id": "${identificador}"
+            "titulo": "${seleccionTitulo}",
+            "descripcion": "${description}",
+            "linkasset": "${image}",
+            "autor": "${nameUser}",
+            "created": "${dateTime}",
+            "tipo": "${categoria}" }`
+            console.log(requestBody);
+        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/update.php", {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${userToken}`
+            },
+            body: requestBody,
+        });
+        console.log(response.json())
+    
     }
 
     const GETNoticiaIndividual = async ( idnoticia ) => {
@@ -64,35 +104,60 @@ $( document ).ready(() => {
             noticias.forEach(({ id, titulo, autor, tipo, descripcion, linkasset, created }) => {
                 if(idnoticia==id){
                     $('#ver-noticias-modal').append(`
-                    <h1>${titulo}</h1>
-                    <h4>${autor}</h4>
-                    <h4>${tipo}</h4>
-                    <h5>${created}</h5>
-                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="465" height="500">
-                    <br><br>
-                    <p>${descripcion}</p>
+                            
+                            <div class="modal-body">
+                            <div class="ver-img-noticia">
+                                <img src="http://localhost${linkasset}" id="output-img" class="card-img-top output-img-container animate__animated animate__fadeIn" alt="...">
+                            </div>
+                            <div class="form-group">
+                                <label >
+                                <h1>${titulo}</h1>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label >${autor}</label>
+                            </div>
+                            <div class="form-group">
+                                <label >${created}</label>
+                            </div>
+                            <p class="card-tipo">${tipo}</p>
+                            <div class="form-group">
+                                <label >${descripcion}</label>
+                            </div>
+                            </div>
                     `);
                 }
             })
         })
     }
 
-    const getSingleNoticiasData = async ( noticiaId ) => {
-        const requestBody = `{ "noticia": "${noticiaId}" }`
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/readsinglenew.php", {
-            method: 'POST',
+    const getSingleNoticiasData = async ( idnoticia ) => {
+        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
+            method: 'GET',
             headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            },
-            body: requestBody,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
         });
-        
-        response.json().then(({ titulo, linkasset }) => {
-            $("#input-titulo-editar").val(titulo);
-            $("#input-img-editar").attr("src",`http://localhost${linkasset}`);
+        response.json().then(({ noticias }) => {
+            $('#ver-noticias-modal').empty();
+            
             $( "#input-img-editar" ).addClass( "show" );
-        });
+            noticias.forEach(({ id, titulo, autor, tipo, descripcion, linkasset, created }) => {
+                if(idnoticia==id){
+                    $("#input-titulo-editar").val(titulo);
+                    $("#input-img-editar").attr("src",`http://localhost${linkasset}`);
+                    /*$('#ver-noticias-modal').append(`
+                    <h1>${titulo}</h1>
+                    <h4>${autor}</h4>
+                    <h4>${tipo}</h4>
+                    <h5>${created}</h5>
+                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="500" height="600">
+                    <p>${descripcion}</p>
+                    `);*/
+                }
+            })
+        })
     }
 
 
@@ -139,7 +204,7 @@ $( document ).ready(() => {
                                         <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                                     </svg>
                                 </a>
-                                <a href="#" class="btn btn-danger"id="${id}">
+                                <a class="btn btn-danger"id="${id}" data-toggle="modal" data-target="#exampleModal3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                     </svg>
@@ -161,8 +226,15 @@ $( document ).ready(() => {
         guardarNoticia();
     });
 
+    
+
     $('#noticias-container').on('click', '.editNoticiasModalButton', (e) => {
         getSingleNoticiasData(e.target.id);
+        var id=e.target.id;
+        $( "#editar-noticia-cta" ).click(() =>{
+            updateNoticia(id);
+            console.log(id)
+        });
     });
 
     $('#noticia-img-upload').on("change", (e) => {
@@ -176,7 +248,9 @@ $( document ).ready(() => {
 
     $('#noticias-container').on('click','.btn-danger', (e) => {
         e.preventDefault();
-        postEliminarNoticia(e.currentTarget.id);
+        $( "#Eliminar-noticia" ).click(() =>{
+            postEliminarNoticia(e.currentTarget.id);
+        });
     })
 
     $('#noticias-container').on('click','.btn-success', (e) => {
