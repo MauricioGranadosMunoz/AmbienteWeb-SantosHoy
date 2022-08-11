@@ -27,7 +27,6 @@
     /*  height: 105%;  */
 }
 
-/* AJUSTE */
 .card-img-top {
     position: relative;
     display: flex;
@@ -88,7 +87,6 @@
     text-align: center;
 }
 
-/* AJUSTE */
 .verNoticiasModalButton{
     color: #fff;
     background-color: rgb(5 102 141);
@@ -98,14 +96,11 @@
     text-decoration: none;
 }
 
-/* AJUSTE */
 .verNoticiasModalButton:hover {
     color: #fff;
 }
 
-/* AJUSTE */
 .card-tipo {
-    /*background-color: #6c757d;*/
     background-color: #00a896;
     justify-content: center;
     display: flex;
