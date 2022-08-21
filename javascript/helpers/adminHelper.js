@@ -70,13 +70,14 @@ $( document ).ready(() => {
         const categoria= $("#input-categoria-editar :selected").text();
         const description = $('#exampleFormControlTextarea1-editar').val();
         const requestBody = `{
-            "id": "${identificador}"
+            "id": "${identificador}",
             "titulo": "${seleccionTitulo}",
             "descripcion": "${description}",
             "linkasset": "${image}",
             "autor": "${nameUser}",
             "created": "${dateTime}",
-            "tipo": "${categoria}" }`
+            "tipo": "${categoria}" 
+        }`
             console.log(requestBody);
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/update.php", {
             method: 'POST',
@@ -87,7 +88,7 @@ $( document ).ready(() => {
             },
             body: requestBody,
         });
-        console.log(response.json())
+        response.json().then(getNoticiasData());
     
     }
 
@@ -172,8 +173,9 @@ $( document ).ready(() => {
         response.json().then(({ noticias }) => {
             $('#noticias-container').empty();
             noticias.forEach(({ id, titulo, autor, tipo, descripcion, linkasset, created }) => {
-                $('#noticias-container').append(`
-                    <div class="card">
+                if(window.localStorage.getItem('admin-name')==autor) {
+                $('#noticias-container').append(` 
+                <div class="card">
                         <div class="card-image-container">
                             <p class="card-id-section">${id}</p>
                             <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
@@ -212,7 +214,7 @@ $( document ).ready(() => {
                             </div>
                         </div>
                     </div>
-                `);
+                `);}
             });
         });
     }
