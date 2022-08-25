@@ -3,9 +3,6 @@ document.getElementById("foo").addEventListener('click',() => {
     const nombre = document.querySelector("#name").value;
     const correo = document.querySelector("#email").value;
     const pass = document.querySelector("#password").value;
-    console.log(nombre);
-    console.log(correo);
-    console.log(pass);
     login(pass,correo,nombre);
 });
 
@@ -17,7 +14,6 @@ const login = async (pass,correo,nombre) => {
             "password": "${pass}"
         }
     `
-    console.log(requestBody);
     const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/register.php", {
         method: 'POST',
         headers: {
