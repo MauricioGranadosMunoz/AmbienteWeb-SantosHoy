@@ -456,3 +456,13 @@ footer .copyright-container a {
   border-radius: 10px;
   padding: 5px 10px;
 }
+.card-tipo.nacionales {
+  background: linear-gradient(180deg,#002a7f 15%,#fff 0,#fff 35%,#dc3545 0,#dc3545 65%,#fff 0,#fff 85%,#002b7f 0,#002b7f);
+}
+
+.card-tipo.sucesos {
+  background-color: #dc3545;
+}
+.card-tipo.economia {
+  background-color: darkgoldenrod;
+}
