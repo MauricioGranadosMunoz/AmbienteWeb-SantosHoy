@@ -26,19 +26,6 @@ $( document ).ready(() => {
         response.json().then(getNoticiasData());
     }
 
-    const guardarNoticia = async () => {
-        const input = document.getElementById('noticia-img-upload');
-        let data = new FormData();
-        data.append('sendimage', input.files[0]);
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/crearNoticiaUpload.php", {
-            method: 'POST',
-            body: data
-        });
-        response.json().then(data => {
-            addDataE(data.images[0]);
-        }); 
-    }
-
     const postEliminarNoticia = async ( identificador ) => {
         const requestBody = `{ "id": "${identificador}" }`
         const userToken = window.localStorage.getItem('admin-token');
@@ -56,14 +43,8 @@ $( document ).ready(() => {
     }
 
 
-    const updateNoticia = async (id2) => {
-        var APIimage=document.getElementById('input-img-editar').src;
-        console.log(APIimage)
-        const identificador=id2;
-        const image=APIimage;
+    const updateNoticia = async (identificador, image) => {
         const seleccionTitulo = $('#input-titulo-editar').val();
-        console.log(addDataE)
-        console.log(seleccionTitulo)
         const userToken = window.localStorage.getItem('admin-token');
         const nameUser = window.localStorage.getItem('admin-name');
         const dateTime = new Date().toLocaleString();
@@ -78,7 +59,6 @@ $( document ).ready(() => {
             "created": "${dateTime}",
             "tipo": "${categoria}" 
         }`
-            console.log(requestBody);
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/update.php", {
             method: 'POST',
             headers: {
@@ -90,6 +70,18 @@ $( document ).ready(() => {
         });
         response.json().then(getNoticiasData());
     
+    }
+    const guardarImagen = async (funcType, newEditId) => {
+        const input = document.getElementById((funcType === 0 ) ? 'noticia-img-upload' : 'noticia-img-upload-editar');
+        let data = new FormData();
+        data.append('sendimage', input.files[0]);
+        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/crearNoticiaUpload.php", {
+            method: 'POST',
+            body: data
+        });
+        response.json().then(data => {
+            (funcType === 0 ) ? addDataE(data.images[0]) : updateNoticia(newEditId, data.images[0]);
+        });
     }
 
     const GETNoticiaIndividual = async ( idnoticia ) => {
@@ -161,6 +153,27 @@ $( document ).ready(() => {
         })
     }
 
+    const getSingleNoticia = async ( idnoticia ) => {
+        const requestBody = `{ "noticia": "${idnoticia}" }`;
+        const userToken = window.localStorage.getItem('admin-token');
+        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/readsinglenew.php", {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+            body: requestBody,
+        });
+        response.json().then(({ id,titulo, linkasset, descripcion, tipo }) => {
+            $('#ver-noticias-modal').empty();
+            $('#input-img-editar').addClass( 'show' );
+            $('#input-titulo-editar').val(titulo);
+            $('#exampleFormControlTextarea1-editar').val(descripcion);
+            $("#editar-noticia-cta").attr('noticiacode', id)
+            $(`#input-categoria-editar option:contains("${ tipo }")`).prop('selected',true);
+            $('#input-img-editar').attr('src',`http://localhost${linkasset}`);
+        })
+    }
 
     const getNoticiasData = async () => {
         const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
@@ -225,19 +238,20 @@ $( document ).ready(() => {
     });
 
     $( "#agregar-noticia-cta" ).click(() =>{
-        guardarNoticia();
+        guardarImagen(0);
     });
 
-    
+    $('.modal-footer').on('click','#editar-noticia-cta', (e) => {
+        e.preventDefault();
+        guardarImagen(1, e.target.getAttribute('noticiacode'))
+    })
 
-    $('#noticias-container').on('click', '.editNoticiasModalButton', (e) => {
-        getSingleNoticiasData(e.target.id);
-        var id=e.target.id;
-        $( "#editar-noticia-cta" ).click(() =>{
-            updateNoticia(id);
-            console.log(id)
-        });
-    });
+
+    $('#noticias-container').on('click','.editNoticiasModalButton', (e) => {
+        e.preventDefault();
+        $("#editar-noticia-cta").prop("disabled", true);
+        getSingleNoticia(e.currentTarget.id)
+    })
 
     $('#noticia-img-upload').on("change", (e) => {
         const output = document.getElementById('output-img');
@@ -247,6 +261,17 @@ $( document ).ready(() => {
             URL.revokeObjectURL(output.src)
         }
     });
+    $('#noticia-img-upload-editar').on("change", (e) => {
+        const output = document.getElementById('input-img-editar');
+        output.src = URL.createObjectURL(e.target.files[0]);
+        output.classList.add( "show" );
+        output.onload = () => {
+            URL.revokeObjectURL(output.src)
+        }
+        $("#editar-noticia-cta").removeAttr('disabled');
+    });
+
+
 
     $('#noticias-container').on('click','.btn-danger', (e) => {
         e.preventDefault();

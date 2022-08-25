@@ -98,7 +98,6 @@ $(document).ready(function () {
 
 
     $('#noticias-container').on('click', '.verNoticiasModalButton', (e) => {
-        console.log(e.target.id)
         localStorage.setItem('noticia-id', e.target.id)
         window.open("./newsDetail.html", "_self")
     });
