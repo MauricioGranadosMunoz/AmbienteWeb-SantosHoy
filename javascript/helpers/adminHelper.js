@@ -124,35 +124,6 @@ $( document ).ready(() => {
         })
     }
 
-    const getSingleNoticiasData = async ( idnoticia ) => {
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        });
-        response.json().then(({ noticias }) => {
-            $('#ver-noticias-modal').empty();
-            
-            $( "#input-img-editar" ).addClass( "show" );
-            noticias.forEach(({ id, titulo, autor, tipo, descripcion, linkasset, created }) => {
-                if(idnoticia==id){
-                    $("#input-titulo-editar").val(titulo);
-                    $("#input-img-editar").attr("src",`http://localhost${linkasset}`);
-                    /*$('#ver-noticias-modal').append(`
-                    <h1>${titulo}</h1>
-                    <h4>${autor}</h4>
-                    <h4>${tipo}</h4>
-                    <h5>${created}</h5>
-                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="500" height="600">
-                    <p>${descripcion}</p>
-                    `);*/
-                }
-            })
-        })
-    }
-
     const getSingleNoticia = async ( idnoticia ) => {
         const requestBody = `{ "noticia": "${idnoticia}" }`;
         const userToken = window.localStorage.getItem('admin-token');
