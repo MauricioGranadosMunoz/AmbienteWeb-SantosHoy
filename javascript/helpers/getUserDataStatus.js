@@ -10,7 +10,7 @@ const adminPageLoad = () => {
 const getUserData = async (token) => {
     const auth = `Bearer ${token}`
 
-    const response = await fetch("http://mgm.social/Backend/getuser.php", {
+    const response = await fetch("http://mgm.social/Backend/getUser.php", {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
