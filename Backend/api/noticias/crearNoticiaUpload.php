@@ -34,7 +34,7 @@ if(empty($linkasset)) {
         if(!file_exists($upload_path . $linkasset)) {
             if($fileSize < 5000000){
                 move_uploaded_file($tempPath, $upload_path . 'imagen-' . date('Y-m-d-H-i-s') . $fileType);
-                $images = ['images' => ['/ambienteweb-santoshoy/assets/apiUploads/' . date('Y-m-d') . '/' . 'imagen-' . date('Y-m-d-H-i-s') . $fileType]];
+                $images = ['images' => ['/assets/apiUploads/' . date('Y-m-d') . '/' . 'imagen-' . date('Y-m-d-H-i-s') . $fileType]];
                 $returnData = msg('OK', 200, 'Imagen subida correctamente', $images);
                 // echo json_encode();
             } else {

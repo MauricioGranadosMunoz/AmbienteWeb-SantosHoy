@@ -12,7 +12,7 @@ const login = async (pass,correo) => {
             "password": "${pass}"
         }
     `
-    const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/login.php", {
+    const response = await fetch("http://mgm.social/Backend/login.php", {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

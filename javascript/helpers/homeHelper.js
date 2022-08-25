@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php',
+        url: 'http://mgm.social/Backend/api/noticias/read.php',
         type: 'GET',
 
         dataType: 'json',
@@ -64,7 +64,7 @@ $(document).ready(function () {
     const getDetailData = async () => {
         const noticiaId = window.localStorage.getItem('noticia-id');
         const requestBody = `{ "noticia": "${noticiaId}" }`
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/readsinglenew.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/readsinglenew.php", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
