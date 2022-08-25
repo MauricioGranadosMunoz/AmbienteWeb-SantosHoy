@@ -1,0 +1,17 @@
+
+.carousel {
+    .carousel-control-next-icon, .carousel-control-prev-icon {
+        filter: none;
+    }
+    .carousel-indicators [data-bs-target] {
+        background-color: $base-color-04;
+    }
+    img {
+        filter: brightness(50%);
+        object-fit: cover;
+    }
+}
+
+.content-container.home-screen {
+    padding: 50px 30px;
+}

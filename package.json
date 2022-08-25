@@ -1,0 +1,22 @@
+{
+  "name": "ambienteweb-santoshoy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w sass/ -o css/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StudentMauricioGranados/AmbienteWeb-SantosHoy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StudentMauricioGranados/AmbienteWeb-SantosHoy/issues"
+  },
+  "homepage": "https://github.com/StudentMauricioGranados/AmbienteWeb-SantosHoy#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

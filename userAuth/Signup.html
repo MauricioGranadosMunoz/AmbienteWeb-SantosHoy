@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Registro</title>
+</head>
+<body>
+
+<div class="login-screen-container">
+  <div class="login-inputs-container">
+    <div class="login-left-panel">
+      <div class="login-left-content">
+        <!-- <h1>Log In Screen</h1> -->
+        <img src="../assets/post-build.svg">
+      </div>
+    </div>
+    
+    <div class="login-right-panel">
+      <div class="login-text-container">
+        <h2>Sign up | Santos Hoy</h2>
+        <p>Ingrese sus datos para el registro a continuacion</p>
+      </div>
+      <form onsubmit="return false">
+        <div class="inputs-login-container">
+            <div class="input-item-login-container">
+                <label for="uname"><b>Nombre Completo</b></label>
+                <input type="text" id="name" required >
+              </div>
+          <div class="input-item-login-container">
+            <label for="uname"><b>Correo Electronico</b></label>
+            <input type="text" id="email" required >
+          </div>
+      
+          <div class="input-item-login-container">
+            <label for="psw"><b>Password</b></label>
+            <input type="password" id="password" required >
+          </div>
+          <div id="error-login" class="error-login-container animate__animated animate__headShake">
+            <p>No se pudo registrar, verifique su información</p>
+          </div>
+      
+          <button class="login-cta" type="submit" id="foo">Crear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+<script src="../javascript/helpers/signupHelper.js"></script>
+</html>

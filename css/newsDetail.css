@@ -1,0 +1,22 @@
+.breadcrumb {
+    margin-top: 50px;
+}
+.news-detail {
+    display: flex;
+    padding: 40px 0;
+}
+.news-detail .card-tipo {
+    width: fit-content;
+    padding: 10px 15px;
+}
+
+.news-detail .detail-image-container img {
+    object-fit: cover;
+    max-width: 600px;
+    max-height: 450px;
+    border-radius: 20px;
+}
+
+.news-detail .card-noticia-type svg {
+    margin-right: 5px;
+}

@@ -1,0 +1,37 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content-container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-titles {
+    margin-bottom: 30px;
+}
+
+.noticias-container {
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(small){ 
+        flex-wrap: wrap;
+        justify-content: left;
+        flex-direction: row;
+        .card {
+            flex: 0 0 32%;
+            margin-right: 15px;
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+        .card:not(:last-child) {
+            margin-bottom: 15px;
+        }
+    }
+    
+}

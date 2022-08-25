@@ -2,10 +2,23 @@
 class Database {
     
     // CREAMOS LA CONN CON LA BASE DE DATOS
-    private $db_host = 'localhost';
+
+    // private $db_host = '20.51.249.9';
+    // private $db_name = 'santos-hoy';
+    // private $db_username = 'santoshoy';
+    // private $db_password = 'mauriciogrm123456Mg';
+
+    private $db_host = 'sc-404-proyecto.mysql.database.azure.com';
     private $db_name = 'santos-hoy';
-    private $db_username = 'root';
-    private $db_password = '';
+    private $db_username = 'azureuser@sc-404-proyecto';
+    private $db_password = 'password123!@#';
+
+    // private $db_host = 'santos-hoy.mysql.database.azure.com';
+    // private $db_name = 'santos-hoy';
+    // private $db_username = 'santoshoyuser@santos-hoy';
+    // private $db_password = 'password123!@#';
+
+    
     
     public function dbConnection(){
         
@@ -19,5 +32,12 @@ class Database {
             exit;
         }
           
+    }
+    public function endPointResponseMsg($success, $status, $message){
+        return array_merge([
+            'success' => $success,
+            'status' => $status,
+            'message' => $message
+        ]);
     }
 }
