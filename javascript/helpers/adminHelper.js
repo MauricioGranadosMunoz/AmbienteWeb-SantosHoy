@@ -100,7 +100,7 @@ $( document ).ready(() => {
                             
                             <div class="modal-body">
                             <div class="ver-img-noticia">
-                                <img src="http://localhost${linkasset}" id="output-img" class="card-img-top output-img-container animate__animated animate__fadeIn" alt="...">
+                                <img src="http://mgm.social/${linkasset}" id="output-img" class="card-img-top output-img-container animate__animated animate__fadeIn" alt="...">
                             </div>
                             <div class="form-group">
                                 <label >
@@ -142,7 +142,7 @@ $( document ).ready(() => {
             $('#exampleFormControlTextarea1-editar').val(descripcion);
             $("#editar-noticia-cta").attr('noticiacode', id)
             $(`#input-categoria-editar option:contains("${ tipo }")`).prop('selected',true);
-            $('#input-img-editar').attr('src',`http://localhost${linkasset}`);
+            $('#input-img-editar').attr('src',`http://mgm.social/${linkasset}`);
         })
     }
 
@@ -162,7 +162,7 @@ $( document ).ready(() => {
                 <div class="card">
                         <div class="card-image-container">
                             <p class="card-id-section">${id}</p>
-                            <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                            <img src="http://mgm.social/${linkasset}" class="card-img-top" alt="...">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">${titulo}</h5>

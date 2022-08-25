@@ -24,7 +24,7 @@ if(empty($linkasset)) {
     $errorMSG = json_encode(array("message" => "Favor seleccione una imagen", "status" => false));  
     echo $errorMSG;
 } else {
-    $upload_path = '../../../assets/apiUploads/' . date('Y-m-d') . '/';
+    $upload_path = '/assets/apiUploads/' . date('Y-m-d') . '/';
     if (!file_exists($upload_path)) {
         mkdir($upload_path);
     }

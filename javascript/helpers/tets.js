@@ -68,7 +68,7 @@ $( document ).ready(() => {
                     <h4>${autor}</h4>
                     <h4>${tipo}</h4>
                     <h5>${created}</h5>
-                    <img src="http://localhost${linkasset}" alt="imagen noticia" width="500" height="600">
+                    <img src="http://mgm.social/${linkasset}" alt="imagen noticia" width="500" height="600">
                     <p>${descripcion}</p>
                     `);
                 }
@@ -89,7 +89,7 @@ $( document ).ready(() => {
         
         response.json().then(({ titulo, linkasset }) => {
             $("#input-titulo-editar").val(titulo);
-            $("#input-img-editar").attr("src",`http://localhost${linkasset}`);
+            $("#input-img-editar").attr("src",`http://mgm.social/${linkasset}`);
             $( "#input-img-editar" ).addClass( "show" );
         });
     }
@@ -110,7 +110,7 @@ $( document ).ready(() => {
                     <div class="card">
                         <div class="card-image-container">
                             <p class="card-id-section">${id}</p>
-                            <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                            <img src="http://mgm.social/${linkasset}" class="card-img-top" alt="...">
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">${titulo}</h5>

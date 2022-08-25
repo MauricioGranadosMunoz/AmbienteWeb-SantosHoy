@@ -11,7 +11,7 @@ $(document).ready(function () {
                 $('#noticias-container').append(`
                     <div class="card home-page animate__animated animate__fadeIn">
                         <div class="card-img-container">
-                            <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                            <img src="http://mgm.social/${linkasset}" class="card-img-top" alt="...">
                             <div class="card-img-body">
                                 <h5 class="card-title">${titulo}</h5>
                             </div>
@@ -31,7 +31,7 @@ $(document).ready(function () {
                 /*
                 $('#noticias-container2').append(`
                     <div class="card" id="${id}">
-                            <img src="http://localhost${linkasset}" class="card-img-top" alt="...">
+                            <img src="http://mgm.social/${linkasset}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${titulo}</h5>
                             <p class="card-text">${descripcion}</p> 
@@ -77,7 +77,7 @@ $(document).ready(function () {
             $('#dettale-noticias-container').append(`
                     <div class="news-detail">
                         <div class="detail-image-container animate__animated animate__slideInLeft">
-                            <img src="http://localhost${linkasset}" class="card-img-top-news" alt="...">
+                            <img src="http://mgm.social/${linkasset}" class="card-img-top-news" alt="...">
                         </div>
                         <div class="content-container-details">
                             <div class="card-noticia-type">
