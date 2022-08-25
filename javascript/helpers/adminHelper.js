@@ -113,7 +113,7 @@ $( document ).ready(() => {
                             <div class="form-group">
                                 <label >${created}</label>
                             </div>
-                            <p class="card-tipo">${tipo}</p>
+                            <p class="card-tipo ${tipo.toLowerCase()}">${tipo}</p>
                             <div class="form-group">
                                 <label >${descripcion}</label>
                             </div>

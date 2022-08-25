@@ -1,0 +1,81 @@
+.card.home-page {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+.card.home-page .card-body {
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0 0 20px 20px;
+    border-top: 0;
+}
+
+.card.home-page .card-body .card-tipo {
+    width: fit-content;
+    padding: 10px 15px;
+    margin-top: 5px;
+    font-size: 12px;
+} 
+
+.card.home-page .card-body .div-visualizar-noticia {
+    display: flex;
+    justify-content: center;
+}
+.card.home-page .card-body .div-visualizar-noticia .verNoticiasModalButton { 
+    width: 80%;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card.home-page .card-body .div-visualizar-noticia .verNoticiasModalButton:hover { 
+    background-color: #00A896;
+    border-color: #00A896;
+}
+
+
+.card.home-page  .card-img-container {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+.card.home-page  .card-img-container img {
+    min-height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card.home-page  .card-img-container .card-img-body {
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 14.5px );
+    -webkit-backdrop-filter: blur( 14.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 20px 20px 0 0;
+
+}
+.card.home-page  .card-img-container .card-img-body h5 {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+@media (min-width: 960px) {
+    .noticias-container .card.home-page { 
+        margin-right: 30px;
+        min-width: 350px;
+        margin-bottom: 30px;
+    }
+}
