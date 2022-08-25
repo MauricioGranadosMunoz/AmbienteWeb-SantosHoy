@@ -14,7 +14,7 @@ const login = async (pass,correo,nombre) => {
             "password": "${pass}"
         }
     `
-    const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/register.php", {
+    const response = await fetch("http://mgm.social/Backend/register.php", {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -25,7 +25,7 @@ const login = async (pass,correo,nombre) => {
     response.json().then(data => {
         if(data.success == 1) {
             
-            window.location.href = "http://localhost/ambienteweb-santoshoy/userAuth/loginScreen.html";
+            window.location.href = "http://mgm.social/userAuth/loginScreen.html";
         } else {
             
         }

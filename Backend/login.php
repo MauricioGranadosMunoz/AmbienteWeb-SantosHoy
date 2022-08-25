@@ -69,7 +69,7 @@ else:
 
                     $jwt = new JwtHandler();
                     $token = $jwt->jwtEncodeData(
-                        'http://localhost/php_auth_api/',
+                        'http://mgm.social/php_auth_api/',
                         array("user_id"=> $row['id'])
                     );
                     

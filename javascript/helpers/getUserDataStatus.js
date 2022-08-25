@@ -3,14 +3,14 @@ const adminPageLoad = () => {
     if (token) {
         getUserData(token);
     } else {
-        window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
+        window.location.href = "/userAuth/loginScreen.html";
     }
 }
 
 const getUserData = async (token) => {
     const auth = `Bearer ${token}`
 
-    const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/getuser.php", {
+    const response = await fetch("http://mgm.social/Backend/getuser.php", {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -25,7 +25,7 @@ const getUserData = async (token) => {
             document.getElementById("usuario").innerHTML = `<span>Bienvenido</span> ${data.user.name}`;
 
         } else {
-            window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
+            window.location.href = "/userAuth/loginScreen.html";
         }
     });
 }

@@ -14,7 +14,7 @@ $( document ).ready(() => {
             "created": "${dateTime}",
             "tipo": "${categoria}" }`
 
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/crear.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/crear.php", {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
@@ -29,7 +29,7 @@ $( document ).ready(() => {
     const postEliminarNoticia = async ( identificador ) => {
         const requestBody = `{ "id": "${identificador}" }`
         const userToken = window.localStorage.getItem('admin-token');
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/delete.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/delete.php", {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
@@ -59,7 +59,7 @@ $( document ).ready(() => {
             "created": "${dateTime}",
             "tipo": "${categoria}" 
         }`
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/update.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/update.php", {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
@@ -75,7 +75,7 @@ $( document ).ready(() => {
         const input = document.getElementById((funcType === 0 ) ? 'noticia-img-upload' : 'noticia-img-upload-editar');
         let data = new FormData();
         data.append('sendimage', input.files[0]);
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/crearNoticiaUpload.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/crearNoticiaUpload.php", {
             method: 'POST',
             body: data
         });
@@ -85,7 +85,7 @@ $( document ).ready(() => {
     }
 
     const GETNoticiaIndividual = async ( idnoticia ) => {
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/read.php", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -127,7 +127,7 @@ $( document ).ready(() => {
     const getSingleNoticia = async ( idnoticia ) => {
         const requestBody = `{ "noticia": "${idnoticia}" }`;
         const userToken = window.localStorage.getItem('admin-token');
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/readsinglenew.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/readsinglenew.php", {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
@@ -147,7 +147,7 @@ $( document ).ready(() => {
     }
 
     const getNoticiasData = async () => {
-        const response = await fetch("http://localhost/ambienteweb-santoshoy/Backend/api/noticias/read.php", {
+        const response = await fetch("http://mgm.social/Backend/api/noticias/read.php", {
             method: 'GET',
             headers: {
               'Accept': 'application/json',
@@ -205,7 +205,7 @@ $( document ).ready(() => {
 
     $( "#logout-cta" ).click(() => {
         window.localStorage.removeItem('admin-token');
-        window.location.href = "/ambienteweb-santoshoy/userAuth/loginScreen.html";
+        window.location.href = "/userAuth/loginScreen.html";
     });
 
     $( "#agregar-noticia-cta" ).click(() =>{
