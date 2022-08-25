@@ -8,10 +8,10 @@ class Database {
     // private $db_username = 'santoshoy';
     // private $db_password = 'mauriciogrm123456Mg';
 
-    private $db_host = 'localhost';
+    private $db_host = 'santos-hoy.mysql.database.azure.com';
     private $db_name = 'santos-hoy';
-    private $db_username = 'root';
-    private $db_password = '';
+    private $db_username = 'santoshoyuser';
+    private $db_password = '*8g^e04A9cXg';
     
     public function dbConnection(){
         
